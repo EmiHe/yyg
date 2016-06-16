@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+
+<mapper namespace="cn.yyg.UserMapper">
+
+	<insert id="insert" parameterType="cn.yyg.domain.User">
+		INSERT INTO user (userId, username, password, userPhone, address, date)
+		VALUES 		  (#{userId},#{username},#{password},#{userPhone},#{address},#{date})
+	</insert>
+	
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM user
+		WHERE userId = #{uderId}
+	</delete>
+	
+	<update id="updateById" parameterType="cn.yyg.domain.User">
+		UPDATE  user	 
+		<set>
+			<if test="username != null">username = #{username},</if>
+			<if test="password != null">password = #{password},</if>
+			
+			<if test="userPhone != null">userPhone = #{userPhone},</if>
+			<if test="address != null">address = #{address},</if> 		
+		</set>
+		
+		WHERE userId = #{userId}
+	</update>
+	
+	
+
+		
+	<!-- <select id="getByUserName" resultType="cn.yyg.domain.User" parameterType="String">
+		SELECT * FROM user WHERE AUSERNAME = #{username}
+	</select> -->
+	
+	<select id="getById" parameterType="String" resultType="cn.yyg.domain.User">
+		SELECT * FROM user WHERE userId = #{userId}
+	</select>
+	
+	
+	
+	
+</mapper>

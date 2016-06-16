@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别名称 -->
+
+<mapper namespace="cn.yyg.ActivityMapper">
+
+	<insert id="insert" parameterType="cn.yyg.domain.Activity">
+		INSERT INTO activity (aid, goodname, goodtype, goodcolor, numberCount, numberSaled,status,openDate,currentIndex)
+		VALUES 			(#{aid},#{goodname},#{goodtype},#{goodcolor},#{numberCount},#{numberSaled},#{status},#{openDate},#{currentIndex})
+	</insert>
+	
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM activity
+		WHERE aid = #{aid}
+	</delete>
+	
+	<update id="updateById" parameterType="cn.yyg.domain.Activity">
+		UPDATE  activity	 
+		<set>
+			<if test="sourceNumber != null">sourceNumber = #{sourceNumber}</if>
+			<if test="userId != null">userId = #{userId}</if>
+			
+			
+			<if test="goodname != null">goodname = #{goodname},</if>
+			<if test="goodtype != null">goodtype = #{goodtype},</if>
+			<if test="goodcolor != null">goodcolor= #{goodcolor},</if>
+			<if test="numberCount != null">numberCount = #{numberCount},</if>
+			<if test="numberSaled != null">numberSaled = #{numberSaled},</if>
+			<if test="status != null">status = #{status},</if>
+			<if test="openDate != null">openDate = #{openDate},</if>
+			<if test="currentIndex != null">currentIndex = #{currentIndex},</if>
+		</set>
+		
+		WHERE aid = #{aid}
+	</update>
+	
+	
+
+		
+	<!-- <select id="getByUserName" resultType="cn.yyg.domain.Activity" parameterType="String">
+		SELECT * FROM r_admin WHERE AUSERNAME = #{username}
+	</select> -->
+	<select id="getById" parameterType="String" resultType="cn.yyg.domain.Activity">
+		SELECT * FROM activity 
+		WHERE aid = #{aid}
+	</select>
+	<select id="getUserActivity" parameterType="String" resultType="cn.yyg.domain.Activity">
+		SELECT * FROM activity 
+		WHERE userId = #{userId}
+	</select>
+	
+	
+	
+</mapper>
