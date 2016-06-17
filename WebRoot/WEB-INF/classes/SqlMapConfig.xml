@@ -39,9 +39,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<!-- 映射文件mapper -->
 	<mappers>
-		<mapper resource="cn/mr/mapper/AdminMapper.xml"/>
-		<mapper resource="cn/mr/mapper/CompanyMapper.xml"/>
-
+		<mapper resource="cn/yyg/domain/UserMapper.xml"/>
+		<mapper resource="cn/yyg/domain/LuckNumberMapper.xml"/>
+		<mapper resource="cn/yyg/domain/ActivityMapper.xml"/>
 	</mappers>
 	
 </configuration>

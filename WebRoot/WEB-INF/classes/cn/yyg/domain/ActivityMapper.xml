@@ -6,6 +6,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="cn.yyg.ActivityMapper">
 
+	<resultMap type="cn.yyg.domain.Activity" id="ActivityUserNumber">
+		<id property="aid" column="aid"/>
+		<result property="goodname" column="goodname"/>
+		<result property="goodtype" column="goodtype"/>
+		<result property="goodcolor" column="goodcolor"/>
+		<result property="numberCount" column="numberCount"/>
+		<result property="numberSaled" column="numberSaled"/>
+		<result property="status" column="status"/>
+		<result property="openDate" column="openDate"/>
+		<result property="currentIndex" column="currentIndex"/>
+		<result property="userId" column="userId"/>
+		<result property="sourceNumber" column="sourceNumber"/>
+		<collection property="myLuckNumber" column="aid" ofType="cn.yyg.domain.LuckNumber">
+			<id property="lid" column="lid"/>
+			<result property="userId" column="luserId"/>
+			<result property="aid" column="laid"/>
+			<result property="number" column="number"/>
+			<result property="date" column="date"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getActivityUserNumber" resultMap="ActivityUserNumber" parameterType="map">
+		select 
+		a.aid, a. goodname, a. goodtype, a. goodcolor, a. numberCount, a. numberSaled, a.status, a.openDate, a.currentIndex, a.userId, a.sourceNumber,
+		l.lid, l.userId as luserId, l.aid as laid, l.number, l.date
+		from 
+		activity a left join lucknumber l 
+		on a.aid=l.aid 
+		where l.userId = #{userId} and a.aid = #{aid}
+	</select>
+
 	<insert id="insert" parameterType="cn.yyg.domain.Activity">
 		INSERT INTO activity (aid, goodname, goodtype, goodcolor, numberCount, numberSaled,status,openDate,currentIndex)
 		VALUES 			(#{aid},#{goodname},#{goodtype},#{goodcolor},#{numberCount},#{numberSaled},#{status},#{openDate},#{currentIndex})
@@ -19,8 +50,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateById" parameterType="cn.yyg.domain.Activity">
 		UPDATE  activity	 
 		<set>
-			<if test="sourceNumber != null">sourceNumber = #{sourceNumber}</if>
-			<if test="userId != null">userId = #{userId}</if>
+			<if test="sourceNumber != null">sourceNumber = #{sourceNumber},</if>
+			<if test="userId != null">userId = #{userId},</if>
 			
 			
 			<if test="goodname != null">goodname = #{goodname},</if>

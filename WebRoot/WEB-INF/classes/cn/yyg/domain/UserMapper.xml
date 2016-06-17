@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insert" parameterType="cn.yyg.domain.User">
 		INSERT INTO user (userId, username, password, userPhone, address, date)
-		VALUES 		  (#{userId},#{username},#{password},#{userPhone},#{address},#{date})
+		VALUES 		  (#{userId},#{username},#{password},#{userPhone},#{address},now())
 	</insert>
 	
 	<delete id="deleteById" parameterType="String">

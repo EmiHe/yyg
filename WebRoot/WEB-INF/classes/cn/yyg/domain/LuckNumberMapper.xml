@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insert" parameterType="cn.yyg.domain.LuckNumber">
 		INSERT INTO lucknumber (lid, userid, aid, number, date)
-		VALUES 				(#{lid},#{userid},#{aid},#{number},#{date})
+		VALUES 				(#{lid},#{userId},#{aid},#{number},#{date})
 	</insert>
 	
 	<delete id="deleteById" parameterType="String">
@@ -41,9 +41,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM lucknumber 
 		WHERE aid = #{aid} and userId = #{userId} 
 	</select>
-	<select id="geByNumber" parameterType="int" resultType="cn.yyg.domain.LuckNumber">
+	<select id="getByActivityNumber" parameterType="map" resultType="cn.yyg.domain.LuckNumber">
 		SELECT * FROM lucknumber 
-		WHERE number = #{number} 
+		WHERE number = #{number} and aid = #{aid}
 	</select>
 	
 	

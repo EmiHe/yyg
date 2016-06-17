@@ -9,7 +9,7 @@ public class User {
 	private String password;
 	private String userPhone;
 	private String address;
-	private Date  datetime;
+	private Date  date;
 	
 	public String getUserId() {
 		return userId;
@@ -41,19 +41,19 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getDatetime() {
-		return datetime;
+	public Date getDate() {
+		return date;
 	}
-	public void setDatetime(Date datetime) {
-		this.datetime = datetime;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username
 				+ ", password=" + password + ", userPhone=" + userPhone
-				+ ", address=" + address + ", datetime=" + datetime + "]";
+				+ ", address=" + address + ", date=" + date + "]";
 	}
-	
+
 	
 
 }
