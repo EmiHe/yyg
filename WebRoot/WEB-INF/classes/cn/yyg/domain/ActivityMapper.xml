@@ -18,6 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="currentIndex" column="currentIndex"/>
 		<result property="userId" column="userId"/>
 		<result property="sourceNumber" column="sourceNumber"/>
+		<result property="bandCategory" column="bandCategory"/>
+		
 		<collection property="myLuckNumber" column="aid" ofType="cn.yyg.domain.LuckNumber">
 			<id property="lid" column="lid"/>
 			<result property="userId" column="luserId"/>
@@ -27,9 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</collection>
 	</resultMap>
 	
+	<!-- see the current user the one of activity and the activity's numbers -->
 	<select id="getActivityUserNumber" resultMap="ActivityUserNumber" parameterType="map">
 		select 
-		a.aid, a. goodname, a. goodtype, a. goodcolor, a. numberCount, a. numberSaled, a.status, a.openDate, a.currentIndex, a.userId, a.sourceNumber,
+		a.aid, a. goodname, a. goodtype, a. goodcolor, a. numberCount, a. numberSaled, a.status, a.openDate, a.currentIndex, a.userId, a.sourceNumber,a.bandCategory,
 		l.lid, l.userId as luserId, l.aid as laid, l.number, l.date
 		from 
 		activity a left join lucknumber l 
@@ -38,8 +41,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="insert" parameterType="cn.yyg.domain.Activity">
-		INSERT INTO activity (aid, goodname, goodtype, goodcolor, numberCount, numberSaled,status,openDate,currentIndex)
-		VALUES 			(#{aid},#{goodname},#{goodtype},#{goodcolor},#{numberCount},#{numberSaled},#{status},#{openDate},#{currentIndex})
+		INSERT INTO activity (aid, goodname, goodtype, goodcolor, numberCount, numberSaled,status,openDate,currentIndex, bandCategory)
+		VALUES 			(#{aid},#{goodname},#{goodtype},#{goodcolor},#{numberCount},#{numberSaled},#{status},#{openDate},#{currentIndex},#{bandCategory})
 	</insert>
 	
 	<delete id="deleteById" parameterType="String">
@@ -62,6 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="status != null">status = #{status},</if>
 			<if test="openDate != null">openDate = #{openDate},</if>
 			<if test="currentIndex != null">currentIndex = #{currentIndex},</if>
+			<if test="currentIndex != null">bandCategory = #{bandCategory},</if>
 		</set>
 		
 		WHERE aid = #{aid}
@@ -82,6 +86,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE userId = #{userId}
 	</select>
 	
+	<!-- getAllActivityByPage -->
+	<!-- get count of all meet the arg -->
+	<select id="getAllCount" parameterType="String"
+		resultType="int">
+		select count(*) from activity
 	
+		<where>
+			1 = 1
+			<if test="_parameter != null and _parameter !='' ">${_parameter}</if>
+		</where>
+		order by openDate desc
+	</select>	
+	<!-- attr: attrUrl must be the type of 1=1 ('a'='a') and xxx=kkk -->
+	<select id="getCurrentPage" parameterType="HashMap"
+		resultType="cn.yyg.domain.Activity">
+		select * from activity
+		
+		<where>
+			<if test="attrUrl != null">${attrUrl}</if>
+		</where>
+		
+		order by openDate desc, currentIndex desc
+		limit #{lose},#{pageSize}
+	</select>
+	
+	
+	
+	<!-- getActivityById -->
+	
+	<!-- getActivityByTitile(goodname,goodtype,goodcolor) -->
+	<select id="getActivityByTitle" parameterType="map" resultType="cn.yyg.domain.Activity">
+		SELECT * FROM activity
+		WHERE goodname = #{goodname} and goodtype = #{goodtype} and goodcolor = #{goodcolor}
+	</select>
+	
+	<!-- AddLuckNumberByUser(userid) -->
 	
 </mapper>

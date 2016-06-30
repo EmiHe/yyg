@@ -22,20 +22,25 @@ public class ActivityDaoTest {
 	public void testAdd(){
 		
 		try {
+			for(int i=2; i < 20; i++ ){
 			Activity bean = dao.getById("cn.yyg.ActivityMapper.getById", "D82B5EEB4D7D4B50A108C82EF6A6D31C");
 			bean.setAid(CommonUtils.uuid());
 //			bean.setUserId();
-			bean.setGoodname("mi4");
-			bean.setGoodtype("16G");
-			bean.setGoodcolor("blue");
+//			bean.setGoodname("mi4");
+//			bean.setGoodtype("16G");
+//			bean.setGoodcolor("blue");
 			bean.setNumberCount(1999);
 			bean.setNumberSaled(1200);
 			bean.setStatus(1);
 			bean.setOpenDate(new Date());
-			bean.setCurrentIndex(2);
+			bean.setCurrentIndex(i);
+			bean.setBandCategory("Æ»¹û");
 			
 			dao.add("cn.yyg.ActivityMapper.insert", bean);
+			
+			}	
 			SessionFactoryUtils.getSession().commit();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,7 +88,7 @@ public class ActivityDaoTest {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 				map.put("userId", "1qaz");
-				map.put("aid", "1sd");
+				map.put("aid", "D82B5EEB4D7D4B50A108C82EF6A6D31C");
 			Activity list = SessionFactoryUtils.getSession().selectOne("cn.yyg.ActivityMapper.getActivityUserNumber", map);
 			System.out.println(list);
 			System.out.println(list.getMyLuckNumber());
@@ -92,4 +97,31 @@ public class ActivityDaoTest {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	public void testgetActivityByTitle(){
+		try {
+			Map<String, Object> map = new HashMap<String, Object>();
+				map.put("goodname", "iphone6s");
+				map.put("goodtype", "64G");
+				map.put("goodcolor", "°×É«");
+			Activity list = SessionFactoryUtils.getSession().selectOne("cn.yyg.ActivityMapper.getActivityByTitle", map);
+			System.out.println(list);
+		}catch(Exception e){e.printStackTrace();}
+		
+	}
+	@Test
+	public void testGetByPage(){
+		try{
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("attUrl", "bandcategory='Æ»¹û'");
+			map.put("lose", 4);
+			map.put("pageSize", 5);
+		List<Activity> list = SessionFactoryUtils.getSession().selectList("cn.yyg.ActivityMapper.getCurrentPage", map);
+		System.out.println(list);	
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+	}
+	
 }

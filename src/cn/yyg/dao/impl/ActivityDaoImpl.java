@@ -20,5 +20,6 @@ public class ActivityDaoImpl extends BaseDaoImpl<Activity> implements ActivityDa
 		
 		return list;
 	}
+	
 
 }

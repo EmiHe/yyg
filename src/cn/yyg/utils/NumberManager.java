@@ -31,7 +31,7 @@ public class NumberManager {
 			
 			throw new Exception("there is no activity of the aid");
 		}
-
+ 
 	} 
 	
 	public static Integer getLuckNumber(String aid) throws Exception{

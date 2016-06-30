@@ -1,0 +1,71 @@
+.tagsPageMain {
+    padding: 20px 0;
+    height:37px;
+    box-shadow: -1px 0px 1px rgba(0, 0, 0, .04),0px 1px 1px rgba(0, 0, 0, .13),1px 0px 2px rgba(0, 0, 0, .05);
+    border-top: 1px solid #e4e4e4;
+    border-radius: 2px;
+    background: #fff;
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+    zoom: 1;
+    text-align: center;
+    margin: 10px auto;
+}
+#main {
+    text-align: left;
+    font-family: 'microsoft yahei',"\5B8B\4F53",sans-serif;
+}
+.tagsPageMain {
+    text-align: center;
+}
+.tagsPage {
+    text-align: center;
+    font-size: 14px;
+    height: 37px;
+    overflow: hidden;
+}
+.tagsPage a, .tagsPage span {
+    transition: 0.3s ease-in-out;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: inset 0px 1px 1px rgba(50,50,50,0.05);
+    width: 66px;
+    display: inline-block;
+    margin-right: 10px;
+    height: 35px;
+    line-height: 35px;
+}
+a {
+    text-decoration: none;
+    color: #222;
+}
+.tagsPage .text {
+    margin-right: 8px;
+    font-size: 16px;
+}
+.tagsPage .text, .tagsPage .gobtn {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 1px rgba(50,50,50,0.05);
+    background: #f1f1f1;
+    height: 33px;
+    line-height: 33px;
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+.tagsPage .gobtn {
+    border: 1px #a7a7a7 solid;
+    height: 37px;
+}
+.gobtn {
+    overflow: hidden;
+    overflow: hidden;
+}
+input {
+    color: #666;
+    font-size: 100%;
+}

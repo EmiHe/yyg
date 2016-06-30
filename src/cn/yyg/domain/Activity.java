@@ -17,10 +17,19 @@ public class Activity {
 	private Integer currentIndex;
 	private String userId;
 	private String sourceNumber;
+	private String bandCategory;
 	
 	private List<LuckNumber> myLuckNumber = new ArrayList<LuckNumber>();
 	
 	
+
+	public String getBandCategory() {
+		return bandCategory;
+	}
+
+	public void setBandCategory(String bandCategory) {
+		this.bandCategory = bandCategory;
+	}
 
 	public String getAid() {
 		return aid;
@@ -125,9 +134,11 @@ public class Activity {
 				+ ", numberCount=" + numberCount + ", numberSaled="
 				+ numberSaled + ", status=" + status + ", openDate=" + openDate
 				+ ", currentIndex=" + currentIndex + ", userId=" + userId
-				+ ", sourceNumber=" + sourceNumber + ", myLuckNumber="
-				+ myLuckNumber + "]";
+				+ ", sourceNumber=" + sourceNumber + ", bandCategory="
+				+ bandCategory + ", myLuckNumber=" + myLuckNumber + "]";
 	}
+
+
 
 	
 

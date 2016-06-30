@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<properties resource="config.properties"/>
 	
 	
+	
 	<!-- 配置数据源，事务 -->
 	<environments default="test">
 		<environment id="test">
