@@ -9,5 +9,5 @@ public interface ActivityDao extends BaseDao<Activity>{
 
 	public List<Activity> getUserActivity(String userId);
 	
-	
+	public Activity getByTitle(Map<String, String> map);
 }
