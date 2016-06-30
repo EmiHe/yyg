@@ -21,5 +21,18 @@ public class ActivityDaoImpl extends BaseDaoImpl<Activity> implements ActivityDa
 		return list;
 	}
 	
+	public Activity getByTitle(Map<String, String> map){
+		Activity activity = null;
+		try{
+			
+			activity = session.selectOne("cn.yyg.ActivityMapper.getActivityByTitle", map);
+			
+		}catch(Exception e){
+			
+		}
+		
+		return activity;
+		
+	}
 
 }
