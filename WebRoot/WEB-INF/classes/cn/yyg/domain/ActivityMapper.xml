@@ -55,17 +55,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<set>
 			<if test="sourceNumber != null">sourceNumber = #{sourceNumber},</if>
 			<if test="userId != null">userId = #{userId},</if>
+			<if test="status != null">status = #{status},</if>
 			
+			<if test="numberCount != null">numberCount = #{numberCount},</if>
+			<if test="numberSaled != null">numberSaled = #{numberSaled},</if>
 			
 			<if test="goodname != null">goodname = #{goodname},</if>
 			<if test="goodtype != null">goodtype = #{goodtype},</if>
 			<if test="goodcolor != null">goodcolor= #{goodcolor},</if>
-			<if test="numberCount != null">numberCount = #{numberCount},</if>
-			<if test="numberSaled != null">numberSaled = #{numberSaled},</if>
-			<if test="status != null">status = #{status},</if>
 			<if test="openDate != null">openDate = #{openDate},</if>
 			<if test="currentIndex != null">currentIndex = #{currentIndex},</if>
-			<if test="currentIndex != null">bandCategory = #{bandCategory},</if>
+			<if test="bandCategory != null">bandCategory = #{bandCategory},</if>
 		</set>
 		
 		WHERE aid = #{aid}
