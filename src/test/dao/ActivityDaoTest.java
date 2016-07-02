@@ -18,7 +18,7 @@ public class ActivityDaoTest {
 	
 	ActivityDao dao = (ActivityDao) BeanFactory.get("ActivityDao");
 	
-	@Test
+	
 	public void testAdd(){
 		
 		try {

@@ -1,0 +1,36 @@
+    .leftrow{
+        background-color: #f5f5f5;
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        top: 51px;
+        padding: 20px 0 0 0;
+    }
+
+    .rightrow{
+        top: 30px;
+    }
+
+    .gourpbtn {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+    }
+
+    .gourpan {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 6px;
+    }
+
+    .nav-sidebar > .active > a,
+    .nav-sidebar > .active > a:hover,
+    .nav-sidebar > .active > a:focus {
+        color: #fff;
+        background-color: #428bca;
+    }
+
+    .panlhead{
+        color: #fff;
+        background-color: #428bca;
+    }

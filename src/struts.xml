@@ -6,12 +6,37 @@
 <struts>
 
 
+	<!-- 推荐关闭动态加载，使用通配符 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/><!-- 动态action的开启声明语句 -->
 	
 	<!-- struts mapper -->
-	
 
 	<include file="test/test.xml"></include>
 	<!-- <include file="cn/fruit/action/struts-testAction.xml"></include> -->
+   
+	<!-- activity Action -->
+	<package name="activity" namespace="/" extends="struts-default">
+		<action name="ActivityAction" class="cn.yyg.action.ActivityAction">
+			<result name="indexProgressActivity">/ProgressActivity.jsp</result>
+			<result name="indexWaitingActivity">/ProgressActivity.jsp</result>
+			<result name="indexCompleteActivity">/CompleteActivity.jsp</result>
+			<result name="DetailProgessActivity">/DetailProgressActivity.jsp</result>
+			<result name="DetailWaitingActivity">/DetailWaitingActivity.jsp</result>
+			<result name="DetailCompleteActivty">/DetailCompleteActivity.jsp</result>
+			<result name="JoinProgressActivity">Wycy.jsp</result>
+			<result name="UserJoinActivity">/Kjxq.jsp</result>
+			<result name="UserNumberOfProgressAcitivity">/Wdcy.jsp</result>
+			<result name="UserNumberOfWaitingAcitivity">/Wdcy.jsp</result>
+		</action>
+	</package>
+	
+	<!-- User Action -->
+	<package name="user" namespace="/" extends="struts-default">
+	    <action name="UserAction" class="cn.yyg.action.UserAction">
+	        <result name="user">/Grzl.jsp</result>
+	    </action>
+	</package>
+	
 	
 </struts>
  

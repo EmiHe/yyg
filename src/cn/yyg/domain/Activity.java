@@ -21,7 +21,20 @@ public class Activity {
 	
 	private List<LuckNumber> myLuckNumber = new ArrayList<LuckNumber>();
 	
+	public Activity(){}
 	
+	public Activity(String aid,String goodname,String goodtype,String goodcolor,Integer numberCount,
+			Integer numberSaled,String bandCategory,Integer status,Date openDate,Integer currentIndex) {
+		this.goodname=goodname;
+		this.goodtype=goodtype;
+		this.goodcolor=goodcolor;
+		this.numberCount=numberCount;
+		this.bandCategory=bandCategory;
+		this.numberSaled=numberSaled;
+		this.status=status;
+		this.openDate=openDate;
+		this.currentIndex=currentIndex;
+	}
 
 	public String getBandCategory() {
 		return bandCategory;
